@@ -11,15 +11,15 @@ class CreateVectordb:
             self,
             data_folder: str,
             persist_folder: str,
-            embedding_engin: str,
+            embedding_engine: str,
             chunk_size: int,
             chunk_overlap: int)-> None:
         
-        self.embedding_engin = embedding_engin
+        self.embedding_engin = embedding_engine
         self.text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
-            seperator = ["\n\n","\n"," ",""]
+            separators = ["\n\n","\n"," ",""]
 
         )
         self.data_folder = data_folder
