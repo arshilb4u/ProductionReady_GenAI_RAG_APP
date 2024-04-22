@@ -12,15 +12,11 @@ llm_config:
  Your task is to respond to the user's new question using the information from the vectordb without relaying on your own knowledge.\
  you will receive a prompt with the following formate
  
- #chat history:\n
- [user query,response] \n\n
- 
- #Retrieved content number:\n
- Content\n\n
- source \n\n
- 
- #User questions:\n
- New question
+ {context}
+
+  Question: {question}
+
+  Helpful Answer:
  "
  engine: "gpt-3.5-turbo"
  temperature: 0.0
