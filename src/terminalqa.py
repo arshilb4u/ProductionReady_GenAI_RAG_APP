@@ -34,7 +34,6 @@ while True:
         break
     retriever = vectordb.as_retriever(search_type="similarity", search_kwargs={"k":config.k })
     custom_rag_prompt = PromptTemplate.from_template(config.llm_system_role)
-    print(custom_rag_prompt)
     rag_chain = (
     {"context": retriever | format_docs, "question": RunnablePassthrough()}
     | custom_rag_prompt
