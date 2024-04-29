@@ -1,5 +1,6 @@
 import gradio as gr
 from utils.settings import Settings_UI
+from utils.ChatFun import Chat
 
 with gr.Blocks() as demo:
     with gr.Tabs():
@@ -34,5 +35,23 @@ with gr.Blocks() as demo:
                 clear_button = gr.ClearButton([input_text, chatbot])
 
 
+            txt_message =  input_text.submit(
+                fn=Chat.RetrieveContent,
+                inputs= [chatbot,input_text,rag_with_dropdown],
+                outputs=[input_text,chatbot],
+                queue=False).then(lambda: gr.Textbox(interactive=True),
+                                                         None, [input_text], queue=False)
+            
+            txt_message =  submit_button.click(
+            fn=Chat.RetrieveContent,
+            inputs= [chatbot,input_text,rag_with_dropdown],
+            outputs=[input_text,chatbot],
+            queue=False).then(lambda: gr.Textbox(interactive=True),
+                                                        None, [input_text], queue=False)
 
-demo.launch()
+
+
+
+if __name__ == "__main__":
+
+    demo.launch()
